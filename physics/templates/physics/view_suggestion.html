@@ -1,0 +1,20 @@
+{% extends "physics/base.html" %}
+{% block title %}View Suggestion{% endblock %}
+{% block admin %}
+	<br />
+	<br />
+	<br />
+	<p style="color:black; text-indent: 30px;"> Suggestion title: "{{title}}"</p>
+    <p style="color:black; text-indent: 30px;"> Description: "{{description}}" </p>
+    <p style="color:black; text-indent: 30px;"> Response Email: "{{response_email}}" </p>	
+    <br />
+	<br />
+	<form enctype="multipart/form-data" action="." method="post" style="color: black;">
+		{% csrf_token %}
+		{% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+		{% endif %}
+		<input type="submit" value="Delete Suggestion" name="delete" />
+        <input type="submit" value="Keep and Return to Suggestions Page" name="cancel" />
+	</form>
+{%endblock%}

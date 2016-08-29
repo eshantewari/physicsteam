@@ -1,0 +1,16 @@
+{% extends "physics/base.html" %}
+{% block title %}Topic{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:add_topic' %}">Add Topic</a>
+<br />
+<br />
+<b>Modify or Delete Topic</b>
+<ul>
+{% for topic in topics %}
+<li><a href="{%url 'physics:edit_topic' topic.id %}">{{topic.title}}</a></li>
+{% endfor %}
+</ul>
+{%endblock%}

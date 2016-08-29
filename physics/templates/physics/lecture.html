@@ -1,0 +1,22 @@
+{% extends "physics/base.html" %}
+{% block title %}Lecture{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:add_lecture' %}">Add Lecture</a>
+<br />
+<br />
+<b>Modify or Delete Lecture</b>
+<ul>
+{% for topic in topics %}
+<li>{{topic.title}}</li>
+    <ul>
+        {% for lecture in topic.sorted_lecture_set %}
+        <li><a href="{%url 'physics:edit_lecture' lecture.id %}">{{lecture.title}}</a></li>
+        {% endfor %}
+    </ul>    
+{%endfor%}
+</ul>
+
+{%endblock%}

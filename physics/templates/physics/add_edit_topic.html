@@ -1,0 +1,18 @@
+{% extends "physics/base.html" %}
+{% block title %}Add or Edit Topic{% endblock %}
+{% block admin %}
+<br />
+<br />
+Add or Edit Topic
+<br />
+<br />
+<form enctype="multipart/form-data" action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    <input type="submit" value="Delete Topic" name="delete" />
+    <input type="submit" value="Cancel" name="cancel" />
+    <br />
+    Beware: Deleting the topic will also erase all links to corresponding lectures and topics
+</form>
+{%endblock%}

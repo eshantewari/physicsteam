@@ -1,0 +1,61 @@
+{% extends "physics/base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<br />
+<br />
+<p><h2>Physics Team Captains:</h2>
+<ul>
+    {%for captain in captains%}
+    {%if not captain.is_superuser and not captain.last_name == 'Schafer'%}
+    <li><h3>{{captain.first_name}} {{captain.last_name}}</h3></li>
+    {%endif%}
+    {%endfor%}
+	
+</ul>
+</p>
+
+
+<p> <h3>
+    Type an email to the physics team captains below.  Use this if you need a clarification
+    or have pressing news.  All fields are required.
+	</h3>
+</p>
+<div id = "contact-area">
+<form enctype="multipart/form-data" action="{% url 'physics:contact' %}" method="post">
+    {% csrf_token %}
+    {{ emailform.as_table }}
+    <br />
+            <br />
+    <input type="submit" value="Send Email" name="email" />
+</form>
+</div>
+<br />
+<br />
+<p> <h3>
+    Type a suggestion to the physics team captains below.  Response email optional </h3>
+</p>
+<div id = "contact-area">
+<form enctype="multipart/form-data"action="{% url 'physics:contact' %}" method="post">
+    {% csrf_token %}
+    {{ suggestionform.as_table }}
+        <br />
+                <br />
+    <input type="submit" value="Send Suggestion" name="suggestion" />
+</form>
+</div>
+<br />
+<br />
+<p><h3>
+    Type a topic request/suggestion to the physics team captains below.
+    Same story as the suggestion form. </h3>
+</p>
+<div id = "contact-area">
+<form action="{% url 'physics:contact' %}" method="post">
+    {% csrf_token %}
+    {{ topic_request_form.as_table }}
+        <br />
+                <br />
+    <input type="submit" value="Send Topic Request" name="topic_request" />
+</form>
+</div>
+{%endblock%}

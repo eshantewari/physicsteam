@@ -1,0 +1,30 @@
+{% extends "physics/base.html" %}
+{% block title %}Upload{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+
+<a href="{% url 'physics:topic' %}">Add or Modify Topic</a>
+<br />
+<br />
+<a href="{% url 'physics:lecture' %}">Add or Modify Lecture</a>
+<br />
+<br />
+<a href="{% url 'physics:pset' %}">Add or Modify Problem Set</a>
+<br />
+<br />
+<a href="{% url 'physics:news' %}">Add or Modify News Item</a>
+<br />
+<br />
+<a href="{% url 'physics:announcement' %}">Add or Modify Announcement</a>
+<br />
+<br />
+<a href="{% url 'physics:topic_requests' %}">Topic Requests</a>
+<br />
+<br />
+<a href="{% url 'physics:suggestions' %}">Suggestions</a>
+<br />
+<br />
+<a href="{% url 'physics:logout_view' %}">Logout</a>
+{%endblock%}

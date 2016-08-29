@@ -1,0 +1,16 @@
+{% extends "physics/base.html" %}
+{% block title %}Topic Requests{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:upload' %}">Return to Main Upload Site</a>
+<br />
+<br />
+<b>View and/or Delete Topic Request</b>
+<ul>
+{% for request in topic_requests %}
+<li><a href="{%url 'physics:view_topic_request' request.id %}">{{request.title}}</a></li>  
+{%endfor%}
+</ul>
+{%endblock%}

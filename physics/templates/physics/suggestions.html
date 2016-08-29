@@ -1,0 +1,16 @@
+{% extends "physics/base.html" %}
+{% block title %}Suggestions{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:upload' %}">Return to Main Upload Site</a>
+<br />
+<br />
+<b>View and/or Delete Suggestion</b>
+<ul>
+{% for suggestion in suggestions %}
+<li><a href="{%url 'physics:view_suggestion' suggestion.id %}">{{suggestion.title}}</a></li>  
+{%endfor%}
+</ul>
+{%endblock%}

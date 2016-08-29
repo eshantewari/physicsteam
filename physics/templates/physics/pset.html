@@ -1,0 +1,23 @@
+{% extends "physics/base.html" %}
+{% block title %}Problem Set{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:add_pset' %}">Add Problem Set</a>
+<br />
+<br />
+<b>Modify or Delete PSet</b>
+<ul>
+{% for topic in topics %}
+<li>{{topic.title}}</li>
+
+    <ul>
+        {% for pset in topic.sorted_pset_set %}
+        <li><a href="{%url 'physics:edit_pset' pset.id %}">{{pset.title}}</a></li>
+        {% endfor %}
+    </ul>    
+
+{%endfor%}
+</ul>
+{%endblock%}

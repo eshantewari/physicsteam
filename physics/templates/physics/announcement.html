@@ -1,0 +1,16 @@
+{% extends "physics/base.html" %}
+{% block title %}Announcement{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:add_announcement' %}">Add Announcement</a>
+<br />
+<br />
+<b>Modify or Delete Announcement</b>
+<ul>
+{% for announcement in announcements %}
+<li><a href="{%url 'physics:edit_announcement' announcement.id %}">{{announcement.title}}</a></li>  
+{%endfor%}
+</ul>
+{%endblock%}

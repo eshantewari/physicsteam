@@ -1,0 +1,68 @@
+{% extends "physics/base.html" %}
+{% block title %}Theoretical{% endblock %}
+{% block content %}
+
+<h4>Below are the various topics for the theoretical team, along with their lectures and problem sets.</h4>
+{% for topic in topics %}
+    {%if topic.level == 2 or topic.level == 0 %}
+    <table class="hoverTable1" align="left">
+
+ 
+            <tr class="clickable-row" data-href="{{forloop.counter}}">
+                <td width="30%">{{topic.title}}</td>
+                <td width="67%">{{topic.description}}</td>
+                
+            </tr>
+    </table>
+    <br />
+    <br />
+    <br />
+    <table id = "table_lecture{{forloop.counter}}" class="subtable" cellspacing="0" style="display:none;">
+            <tr>
+                <th width="30%">Lecture Name</th>
+                <th width="70%">Description</th>
+            </tr>
+            {% for lecture in topic.lecture_set.all %}
+            {% if lecture.level == 2 or lecture.level == 0 %}
+            {% if lecture.lecture_file %}
+            <tr class="clickable-row-link" data-href="{{lecture.lecture_file.url}}">
+                {%else%}
+            <tr class="clickable-row-link" data-href="#">
+            {%endif%}
+                <td>{{lecture.title}}</td>
+                <td>{{lecture.description}}</td>
+            </tr>
+
+            {%endif%}
+            {% endfor %}
+            
+    </table>
+    <br />
+    <table id = "table_pset{{forloop.counter}}" class="subtable" cellspacing="0" style="display:none;">
+            <tr>
+                <th width="30%">Problem Set Name</th>
+                <th width="70%">Description</th>
+            </tr>
+            {% for pset in topic.pset_set.all %}
+            {% if pset.level == 2 or pset.level == 0 %}
+            {% if pset.problems_file%}
+            <tr class="clickable-row-link" data-href="{{pset.problems_file.url}}">
+                <td>{{pset.title}}</td>
+                <td>{{pset.description}}</td>
+            </tr>
+            {%endif%}
+            {%if pset.solutions_file%}
+            <tr class="clickable-row-link" data-href="{{pset.solutions_file.url}}">
+                <td>Solutions to {{pset.title}}</td>
+                <td>{{pset.solutions_description}}</td>
+            </tr>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+    </table>
+    <br />
+{% endif %}
+
+{% endfor %}
+
+{%endblock%}

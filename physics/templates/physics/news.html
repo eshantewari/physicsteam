@@ -1,0 +1,16 @@
+{% extends "physics/base.html" %}
+{% block title %}News{% endblock %}
+{% block admin %}
+<br />
+<br />
+<br />
+<a href="{% url 'physics:add_news' %}">Add News Item</a>
+<br />
+<br />
+<b>Modify or Delete News Item</b>
+<ul>
+{% for news in newsItems %}
+<li><a href="{%url 'physics:edit_news' news.id %}">{{news.title}}</a></li>  
+{%endfor%}
+</ul>
+{%endblock%}

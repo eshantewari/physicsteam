@@ -1,0 +1,51 @@
+{% extends "physics/base.html" %}
+{% block title %}Home{% endblock %}
+{%block header%}
+                  <!--Header section  -->
+    <div class="container" id="home">
+        <div class="row text-center">
+      <div class="col-md-12" >
+          <h1 class="head-main">  Physics Team</h1>
+           <h2 class="head-sub-main"> Montgomery Blair High School</h2>
+          <h3 class="head-last"> </h3>
+          
+          </div>
+
+
+            </div>
+      </div>
+{%endblock%}
+{% block content %}
+<table class='news_announcementTable'>
+        <tr>
+                <th>Announcements</th>
+                <th>News</th>
+        </tr>
+        <tr></tr>
+        <tr>
+                <td>
+                <br />
+                <br />
+                {% for announcement in announcements %}
+                        <strong><font size="4">{{announcement.title}}</font></strong>
+                        <br />
+                        <br />
+                        <p><b><font size = "2" color = "#f9fff5">{{announcement.text}}</font></b></p>
+                {%endfor%}
+                </td>
+                <td>
+                <br />
+                <br />
+                {% for news in newsItems %}
+                        <strong><font size="4">{{news.title}}</font></strong>
+                        <br />
+                        <br />
+                         <p><b><font size = "2" color = "#f9fff5">{{news.text}}</font></b></p>
+                {%endfor%}
+                </td>
+
+        </tr>
+</table>
+
+
+{%endblock%}
