@@ -49,7 +49,7 @@ def authenticate_user(request):
         else:
             state = "Your username and/or password were incorrect."
 
-    return render_to_response('physics/auth.html',{'state':state,'username': username},context_instance = RequestContext(request))
+    return render(request, 'physics/auth.html',{'state':state,'username': username})
 
 def contact(request):
     suggestion = Suggestion()
@@ -96,7 +96,7 @@ def contact(request):
         topic_request_form = TopicRequestForm()
         emailform = EmailForm()
         
-    return render_to_response('physics/contact.html', {'suggestionform': suggestionform,'topic_request_form':topic_request_form,'emailform':emailform,'captains':captains}, context_instance=RequestContext(request))
+    return render(request, 'physics/contact.html', {'suggestionform': suggestionform,'topic_request_form':topic_request_form,'emailform':emailform,'captains':captains})
     
 @login_required
 def logout_view(request):
@@ -145,7 +145,7 @@ def add_edit_lecture(request, lecture_id=None):
     else:
         form = LectureForm(instance=lecture)
 
-    return render_to_response('physics/add_edit_lecture.html', {'form': form, }, context_instance=RequestContext(request))
+    return render(request, 'physics/add_edit_lecture.html', {'form': form, })
 
 @login_required
 def delete_lecture(request, lecture_id=None):
@@ -195,7 +195,7 @@ def add_edit_pset(request, pset_id=None):
         form = PSetForm(instance=pset) # A empty, unbound form
 
     # Render list page with the documents and the form
-    return render_to_response('physics/add_edit_pset.html', {'form': form,}, context_instance=RequestContext(request))
+    return render(request, 'physics/add_edit_pset.html', {'form': form,})
 
 @login_required
 def delete_pset(request, pset_id=None):
@@ -242,7 +242,7 @@ def add_edit_topic(request, topic_id=None):
         form = TopicForm(instance=topic) # A empty, unbound form
 
     # Render list page with the documents and the form
-    return render_to_response('physics/add_edit_topic.html', {'form': form,}, context_instance=RequestContext(request))
+    return render(request, 'physics/add_edit_topic.html', {'form': form,})
 
 @login_required
 def delete_topic(request, topic_id=None):
@@ -288,7 +288,7 @@ def add_edit_announcement(request, announcement_id=None):
         form = AnnouncementForm(instance=announcement) # A empty, unbound form
 
     # Render list page with the documents and the form
-    return render_to_response('physics/add_edit_announcement.html', {'form': form,}, context_instance=RequestContext(request))
+    return render(request, 'physics/add_edit_announcement.html', {'form': form,})
 
 @login_required
 def delete_announcement(request, announcement_id=None):
@@ -337,7 +337,7 @@ def add_edit_news(request, news_id=None):
         form = NewsForm(instance=news) # A empty, unbound form
 
     # Render list page with the documents and the form
-    return render_to_response('physics/add_edit_news.html', {'form': form,}, context_instance=RequestContext(request))
+    return render(request, 'physics/add_edit_news.html', {'form': form,})
 
 @login_required
 def delete_news(request, news_id=None):   
@@ -370,7 +370,7 @@ def view_topic_request(request,topic_request_id=None):
         if 'delete' in request.POST:
             return HttpResponseRedirect(reverse('physics:delete_topic_request',args=(topic_request_id)))
 
-    return render_to_response('physics/view_topic_request.html',{'title':title,'description':description,'response_email':response_email},context_instance = RequestContext(request))
+    return render(request, 'physics/view_topic_request.html',{'title':title,'description':description,'response_email':response_email})
 
 @login_required   
 def delete_topic_request(request,topic_request_id):
@@ -398,7 +398,7 @@ def view_suggestion(request,suggestion_id=None):
         if 'delete' in request.POST:
             return HttpResponseRedirect(reverse('physics:delete_suggestion',args=(suggestion_id)))
 
-    return render_to_response('physics/view_suggestion.html',{'title':title,'description':description,'response_email':response_email},context_instance = RequestContext(request))
+    return render(request, 'physics/view_suggestion.html',{'title':title,'description':description,'response_email':response_email})
 
 @login_required 
 def delete_suggestion(request,suggestion_id):
